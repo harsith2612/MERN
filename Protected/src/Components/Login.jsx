@@ -1,4 +1,13 @@
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Context/AuthContext";
+
 function Login() {
+    const navigate=useNavigate();
+    const {login}=useAuth();
+    const onLogin=()=>{
+        login();
+        navigate('/');
+    }
     return (
         <div className="flex min-h-screen items-center justify-center">
             <div className="w-1/2 space-y-6 px-4 py-10 shadow-2xl lg:w-1/3">
@@ -12,7 +21,7 @@ function Login() {
                     <input type="password" className="w-full rounded-lg border-2 p-2 text-sm outline-sky-500" placeholder="password" />
                 </div>
                 <div className="space-y-2">
-                    <button className="w-full rounded-md border-2 border-sky-500 bg-sky-500 py-1.5 text-sm font-bold text-white">Login</button>
+                    <button className="w-full rounded-md border-2 border-sky-500 bg-sky-500 py-1.5 text-sm font-bold text-white" onClick={()=>onLogin()}>Login</button>
                     <button className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white py-1.5 text-sm font-medium text-gray-800">
                         <svg className="mr-2 h-3 w-3" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="800px" height="800px" viewBox="-0.5 0 48 48" version="1.1">
                             <defs></defs>
